@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 //import routes
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import feedbackRoutes from "./routes/feedback.routes.js";
 
 //configuration
 dotenv.config();
@@ -23,6 +24,7 @@ const PORT = process.env.PORT || 3000;
 //routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/feedback", feedbackRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
