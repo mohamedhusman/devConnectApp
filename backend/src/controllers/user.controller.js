@@ -41,8 +41,9 @@ const updateUserById = async (req, res) => {
     user.projects = projects || user.projects;
 
     const updatedUser = await user.save();
+    const { password, ...rest } = updatedUser;
 
-    res.json({ message: "User updated successfully", user: updatedUser });
+    res.json({ message: "User updated successfully" });
   } catch (error) {
     res
       .status(500)
@@ -52,11 +53,13 @@ const updateUserById = async (req, res) => {
 
 const deleteUserById = async (req, res) => {
   const { id } = req.params;
+
   try {
     const user = await User.findByIdAndDelete(id);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    res.cookie("jwt", "", { httpOnly: true, expires: new Date(0) });
     res.json({ message: "User deleted successfully" });
   } catch (error) {
     res
@@ -65,4 +68,9 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-export { getAllUsers, getUserById, updateUserById, deleteUserById };
+const logoutUser = (req, res) => {
+  res.cookie("jwt", "", { httpOnly: true, expires: new Date(0) });
+  res.json({ message: "logged out successfully" });
+};
+
+export { getAllUsers, getUserById, updateUserById, deleteUserById, logoutUser };
