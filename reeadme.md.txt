@@ -1,0 +1,1 @@
+this is a devConnect app witch allows developers to connect in one platform so requters can hire devs easily.

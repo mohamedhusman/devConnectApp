@@ -1,0 +1,25 @@
+{
+  "name": "devconnectapp",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/mohamedhusman/devConnectApp#readme",
+  "bugs": {
+    "url": "https://github.com/mohamedhusman/devConnectApp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedhusman/devConnectApp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "fullstack": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run start",
+    "frontend": "cd frontend && pnpm run dev"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
