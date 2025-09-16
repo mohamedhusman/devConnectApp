@@ -14,7 +14,7 @@ const Profile = () => {
           <img
             src={userData.profilePic}
             alt="profilePic"
-            className="border-2 border-pink-500 rounded-full w-40 h-40 sm:h-60 sm:w-60"
+            className="border-2 border-pink-500 rounded-full w-40 h-40 sm:h-60 sm:w-60 object-cover"
           />
         </div>
         {/* //About sec */}

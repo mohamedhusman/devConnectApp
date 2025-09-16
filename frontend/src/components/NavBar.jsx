@@ -7,13 +7,6 @@ const NavBar = () => {
   const { getUserData, userData, logout, isAuthenticated } = useUserStore();
 
   const [options, setOptions] = useState(false);
-  useEffect(() => {
-    if (options == true) {
-      setTimeout(() => {
-        setOptions(false);
-      }, 2500);
-    }
-  }, [options]);
 
   useEffect(() => {
     getUserData();
@@ -46,7 +39,10 @@ const NavBar = () => {
               onClick={() => setOptions(!options)}
             />
             {options && (
-              <div className="flex flex-col gap-1.5 bg-amber-50 py-1 px-2 rounded-xl absolute top-10 right-15 text-sm font-semibold">
+              <div
+                className="flex flex-col gap-1.5 bg-amber-50 py-1 px-2 rounded-xl absolute top-10 right-15 text-sm font-semibold"
+                onMouseLeave={() => setOptions(false)}
+              >
                 <Link className="hover:text-gray-700" to={"/profile"}>
                   view profile
                 </Link>
