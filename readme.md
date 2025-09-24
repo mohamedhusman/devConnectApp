@@ -28,13 +28,13 @@ DevConnect is a full-stack web application that allows developers to create and 
 
 ## 📦 Installation
 
-### 1. Clone the repository
+1. Clone the repository
 
 ```bash
 git clone https://github.com/mohamedhusman/devConnectApp.git
 cd devconnect
 
-### 2. install dependencies
+2. install dependencies
 
 # For Frontend
 cd Frontend
