@@ -12,21 +12,24 @@ DevConnect is a full-stack web application that allows developers to create and 
 
 ## 🧰 Tech Stack
 
-**Frontend**  
-- React (Vite)  
-- React Router  
-- Tailwind CSS  
-- Axios  
+**Frontend**
 
-**Backend**  
-- Node.js  
-- Express  
-- MongoDB + Mongoose  
-- JWT + bcrypt  
+- React (Vite)
+- React Router
+- Tailwind CSS
+- Axios
+
+**Backend**
+
+- Node.js
+- Express
+- MongoDB + Mongoose
+- JWT + bcrypt
 
 ## 📦 Installation
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/mohamedhusman/devConnectApp.git
 cd devconnect
@@ -61,6 +64,7 @@ NODE_ENV= development | production
 ### 🏃‍♀️ Run the application
 npm run fullstack
 
-<img src=".image.png">
+![ScreenShot](image.png)
 
 Built with ❤️ by Usman as part of the Codveda Technologies internship.
+```
