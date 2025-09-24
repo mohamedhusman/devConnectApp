@@ -10,7 +10,6 @@ const NavBar = () => {
 
   useEffect(() => {
     getUserData();
-    console.log("userData:", userData);
   }, [isAuthenticated]);
 
   const handleLogout = (e) => {

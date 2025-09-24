@@ -1,1 +1,66 @@
-this is a devConnect app witch allows developers to connect in one platform so requters can hire devs easily.
+# 🚀 DevConnect – Developer Portfolio & Feedback Platform
+
+DevConnect is a full-stack web application that allows developers to create and manage their profiles, showcase their skills and projects, and receive feedback from the community. Built with a focus on clean design, secure authentication, and responsive layout, DevConnect is ideal for developers looking to build their online presence.
+
+## 🌟 Features
+
+- 🔐 **User Authentication** – Secure login and registration using JWT
+- 👤 **Profile Management** – Developers can update bio, skills, GitHub links, and projects
+- 💬 **Public Feedback System** – Visitors can view profiles and leave constructive feedback
+- 📱 **Responsive Design** – Optimized for mobile and desktop devices
+- ⚙️ **RESTful API** – Built with Node.js and Express, connected to MongoDB
+
+## 🧰 Tech Stack
+
+**Frontend**  
+- React (Vite)  
+- React Router  
+- Tailwind CSS  
+- Axios  
+
+**Backend**  
+- Node.js  
+- Express  
+- MongoDB + Mongoose  
+- JWT + bcrypt  
+
+## 📦 Installation
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/mohamedhusman/devConnectApp.git
+cd devconnect
+
+### 2. install dependencies
+
+# For Frontend
+cd Frontend
+npm install
+
+# For Backend
+cd Backend
+npm install
+
+### 🏠 Set up environment variables
+
+# For Frontend
+cd Frontend
+BASE_URL = your_url
+
+# For Backend
+cd backend
+PORT=3000
+MONGODB_URI=MongoDB_URl
+JWT_SECRET=JWT_SECRET
+CLOUDINARY_CLOUD_NAME = cloudirany_name
+CLOUDINARY_API_KEY = cloudirany_key
+CLOUDINARY_API_SECRET = cloudirany_api_secret
+CLIENT_URL = frontend_url
+NODE_ENV= development | production
+
+### 🏃‍♀️ Run the application
+npm run fullstack
+
+![Screen shot](image.png)
+
+Built with ❤️ by Usman as part of the Codveda Technologies internship.

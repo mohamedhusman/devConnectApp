@@ -16,7 +16,8 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   const { id } = req.params;
   try {
-    const user = await User.findById(id).select("-password");
+    const user = await User.findById(id);
+    // .select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -54,7 +55,10 @@ const updateUserById = async (req, res) => {
     const updatedUser = await user.save();
     const { password, ...rest } = updatedUser;
 
-    res.json({ message: "User updated successfully", user: rest });
+    res.json({
+      message: "User updated successfully",
+      user: rest,
+    });
   } catch (error) {
     res
       .status(500)

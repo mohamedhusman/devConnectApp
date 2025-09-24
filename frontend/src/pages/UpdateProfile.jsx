@@ -5,7 +5,7 @@ import { useUserStore } from "../store/user-store.js";
 import { useState } from "react";
 
 const UpdateProfile = () => {
-  const { userData } = useUserStore();
+  const { userData, updateUserData, isLoading } = useUserStore();
   const [updateSkillInput, setUpdateSkillInput] = useState("");
   const [userCrentials, setUserCrentials] = useState({
     name: userData.name,
@@ -15,6 +15,11 @@ const UpdateProfile = () => {
     projects: userData.projects,
     email: userData.email,
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUserData(userData._id, userCrentials);
+  };
 
   const handleImageOnChange = (e) => {
     const file = e.target.files[0];
@@ -42,11 +47,12 @@ const UpdateProfile = () => {
     }));
     setUpdateSkillInput("");
   };
-  const handleRemoveSkill = (skill) => {
-    // setUserCrentials((prev) => ({
-    //   ...prev,
-    //   skills: prev.skills.filter((s) => s !== skill),
-    // }));
+  const handleAddProject = (e) => {
+    e.preventDefault();
+    setUserCrentials((prev) => ({
+      ...prev,
+      projects: [...prev.projects, { title: "", description: "", link: "" }],
+    }));
   };
 
   return (
@@ -122,7 +128,7 @@ const UpdateProfile = () => {
             <textarea
               type="text"
               name="name"
-              maxLength={100}
+              maxLength={1000}
               className="w-full h-10 border-2  outline-fuchsia-500 rounded-md outline-none text-pink-400 px-2 py-2 min-h-20"
               value={userCrentials.bio}
               onChange={(e) =>
@@ -144,8 +150,13 @@ const UpdateProfile = () => {
                 >
                   <span className="text-xs sm:text-sm text-black">{skill}</span>
                   <IoIosClose
-                    className="absolute right-0 top-0 text-lg text-white font-black"
-                    onClick={handleRemoveSkill(skill)}
+                    className="absolute right-0 top-0 text-lg text-white font-black hover:text-pink-500"
+                    onClick={() =>
+                      setUserCrentials((prev) => ({
+                        ...prev,
+                        skills: prev.skills.filter((s, i) => i !== index),
+                      }))
+                    }
                   />
                 </div>
               ))}
@@ -192,6 +203,16 @@ const UpdateProfile = () => {
                       name="title"
                       className="border-[0.5px] border-amber-100 rounded-md outline-none text-amber-100 px-2 py-1 text-xs sm:h-10 sm:w-100 w-60"
                       value={project.title}
+                      onChange={(e) => {
+                        setUserCrentials((prev) => ({
+                          ...prev,
+                          projects: prev.projects.map((p) =>
+                            p._id === project._id
+                              ? { ...p, title: e.target.value }
+                              : p
+                          ),
+                        }));
+                      }}
                     />
                   </div>
                   {/* description */}
@@ -203,10 +224,20 @@ const UpdateProfile = () => {
                       Description
                     </label>
                     <textarea
-                      maxLength={100}
+                      maxLength={500}
                       name="description"
                       className="border-[0.5px] border-amber-100 rounded-md outline-none text-amber-100 px-2 py-1 text-xs sm:min:h-20 sm:w-100"
                       value={project.description}
+                      onChange={(e) => {
+                        setUserCrentials((prev) => ({
+                          ...prev,
+                          projects: prev.projects.map((p) =>
+                            p._id === project._id
+                              ? { ...p, description: e.target.value }
+                              : p
+                          ),
+                        }));
+                      }}
                     />
                   </div>
                   {/* link */}
@@ -219,10 +250,31 @@ const UpdateProfile = () => {
                       name="link"
                       className="border-[0.5px] border-amber-100 rounded-md outline-none text-amber-100 px-2 py-1 text-xs sm:h-10 sm:w-100"
                       value={project.link}
+                      onChange={(e) => {
+                        setUserCrentials((prev) => ({
+                          ...prev,
+                          projects: prev.projects.map((p) =>
+                            p._id === project._id
+                              ? { ...p, link: e.target.value }
+                              : p
+                          ),
+                        }));
+                      }}
                     />
                   </div>
                   {/* close  Icon */}
-                  <div className="absolute top-[-5px] right-[-5px] p-[2px] rounded-full bg-pink-500 hover:bg-pink-700">
+                  <div
+                    className="absolute top-[-5px] right-[-5px] p-[2px] rounded-full bg-pink-500 hover:bg-pink-700"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setUserCrentials((prev) => ({
+                        ...prev,
+                        projects: prev.projects.filter(
+                          (p) => p._id !== project._id
+                        ),
+                      }));
+                    }}
+                  >
                     <IoIosClose
                       hanging={50}
                       width={50}
@@ -234,14 +286,20 @@ const UpdateProfile = () => {
               ))}
             </div>
 
-            <button className="py-2 px-4 bg-pink-500 rounded-md flex w-fit font-semibold hover:bg-pink-700">
+            <button
+              className="py-2 px-4 bg-pink-500 rounded-md flex w-fit font-semibold hover:bg-pink-700"
+              onClick={handleAddProject}
+            >
               Add Project <IoIosAdd className="text-2xl text-fuchsia-50" />
             </button>
           </div>
 
           <div className="w-full flex justify-end">
-            <button className="font-semibold text-sm sm:text-xl leading-normal text-black py-2 px-4 rounded-md bg-pink-500 hover:bg-pink-700  ">
-              Save
+            <button
+              className="font-semibold text-sm sm:text-xl leading-normal text-black py-2 px-4 rounded-md bg-pink-500 hover:bg-pink-700  "
+              onClick={handleSubmit}
+            >
+              {isLoading ? "Saving ..." : "Save"}
             </button>
           </div>
         </div>

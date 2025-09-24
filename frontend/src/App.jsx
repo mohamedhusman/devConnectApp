@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import { useUserStore } from "./store/user-store.js";
 import Profile from "./pages/profile.jsx";
 import UpdateProfile from "./pages/UpdateProfile.jsx";
+import PDevProfile from "./pages/PDevProfile.jsx";
+import error from "./pages/error.jsx";
 
 function App() {
   const { isAuthenticated } = useUserStore();
@@ -20,6 +22,11 @@ function App() {
         <Route
           path="/register"
           element={!isAuthenticated ? <Register /> : <Navigate to={"/"} />}
+        />
+        <Route
+          path="/devProfile/:id"
+          element={<PDevProfile />}
+          errorElement={<error />}
         />
         <Route
           path="/login"
