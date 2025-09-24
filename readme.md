@@ -30,27 +30,30 @@ DevConnect is a full-stack web application that allows developers to create and 
 
 1. Clone the repository
 
-```bash
 git clone https://github.com/mohamedhusman/devConnectApp.git
 cd devconnect
 
-2. install dependencies
+2. nstall dependencies
 
 # For Frontend
+
 cd Frontend
 npm install
 
 # For Backend
+
 cd Backend
 npm install
 
-### 🏠 Set up environment variables
+3. 🏠 Set up environment variables
 
 # For Frontend
+
 cd Frontend
 BASE_URL = your_url
 
 # For Backend
+
 cd backend
 PORT=3000
 MONGODB_URI=MongoDB_URl
@@ -61,10 +64,9 @@ CLOUDINARY_API_SECRET = cloudirany_api_secret
 CLIENT_URL = frontend_url
 NODE_ENV= development | production
 
-### 🏃‍♀️ Run the application
-npm run fullstack
+4. 🏃‍♀️ Run the application
+   npm run fullstack
 
 ![ScreenShot](image.png)
 
 Built with ❤️ by Usman as part of the Codveda Technologies internship.
-```
