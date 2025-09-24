@@ -61,6 +61,6 @@ NODE_ENV= development | production
 ### 🏃‍♀️ Run the application
 npm run fullstack
 
-![Screen shot](image.png)
+<img src=".image.png">
 
 Built with ❤️ by Usman as part of the Codveda Technologies internship.
